@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital News</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and General Layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation Styling */
+        nav ul {
+            list-style: none;
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* News Section */
+        #news {
+            background-color: #007BFF;  /* Blue Background */
+            padding: 40px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-container h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .news-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .news-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .news-item p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Admin Section */
+        #admin-login {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .login-box {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #007BFF;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-box button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Hospital News</h1>
+        <p>Latest Updates from Our Hospital</p>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#admin">Admin</a></li>
+        </ul>
+    </nav>
+
+    <!-- News Section -->
+    <section id="news">
+        <div class="news-container">
+            <h2>Hospital News</h2>
+            <div class="news-list" id="news-list">
+                <!-- News items will appear here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Login Section -->
+    <section id="admin-login" style="display: none;">
+        <div class="login-box">
+            <h3>Admin Login</h3>
+            <input type="text" id="admin-id" placeholder="Admin ID" />
+            <input type="password" id="admin-password" placeholder="Password" />
+            <button onclick="loginAdmin()">Login</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Our Hospital. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Admin Login Credentials (ID and Password)
+        const adminCredentials = {
+            id: "admin123",
+            password: "adminpass"
+        };
+
+        // Sample news articles
+        const newsArticles = [
+            {
+                title: "Hospital Expansion Complete",
+                content: "We are pleased to announce the completion of our hospital expansion, which will allow us to serve more patients and provide better care."
+            },
+            {
+                title: "New Pharmacy Store Opening",
+                content: "Our new pharmacy store is now open, offering a wide range of medications and healthcare products for all your needs."
+            },
+            {
+                title: "New Telemedicine Service Available",
+                content: "Our hospital has launched a new telemedicine service, allowing patients to consult with doctors remotely."
+            },
+            {
+                title: "Free Health Check-up Camp",
+                content: "Join us for a free health check-up camp next week, where our specialists will conduct health screenings and consultations."
+            }
+        ];
+
+        // Function to load news articles dynamically
+        function loadNews() {
+            const newsList = document.getElementById("news-list");
+            newsList.innerHTML = "";  // Clear existing news
+
+            newsArticles.forEach((article) => {
+                const newsItem = document.createElement("div");
+                newsItem.classList.add("news-item");
+                newsItem.innerHTML = `
+                    <h3>${article.title}</h3>
+                    <p>${article.content}</p>
+                `;
+                newsList.appendChild(newsItem);
+            });
+        }
+
+        // Show news and hide login form if logged in
+        function loginAdmin() {
+            const adminId = document.getElementById("admin-id").value;
+            const adminPassword = document.getElementById("admin-password").value;
+
+            if (adminId === adminCredentials.id && adminPassword === adminCredentials.password) {
+                alert("Login successful!");
+                document.getElementById("admin-login").style.display = "none"; // Hide login
+                loadNews(); // Load news articles
+                document.getElementById("news").style.display = "block"; // Show news section
+            } else {
+                alert("Invalid credentials! Please try again.");
+            }
+        }
+
+        // Simulate Admin Login by default
+        document.getElementById("admin-login").style.display = "block"; // Show login by default
+        loadNews(); // Load default news articles
+
+    </script>
+
+</body>
+</html>

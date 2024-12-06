@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Store | Hospital</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and General Layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation Styling */
+        nav ul {
+            list-style: none;
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Pharmacy Store Section */
+        #store {
+            background-color: #007BFF;  /* Blue Background */
+            padding: 40px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .store-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .store-container h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .product-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            font-size: 1.3rem;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        .add-to-cart {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+
+        /* Service Section */
+        .service-container {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .service-box {
+            background-color: #fff;
+            border: 1px solid #007BFF;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            margin: 20px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .service-box:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .service-details {
+            display: none;
+            margin-top: 20px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #f4f4f4;
+            padding: 40px;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        #contact ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #contact ul li {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Hospital Pharmacy Store</h1>
+        <p>Providing Quality Medicines for Your Health</p>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="#store">Pharmacy Store</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Pharmacy Store Section -->
+    <section id="store">
+        <div class="store-container">
+            <h2>Our Pharmacy Products</h2>
+            <div class="product-list">
+                <!-- Product 1 -->
+                <div class="product">
+                    <img src="path_to_product_image_1.jpg" alt="Product 1">
+                    <h3>Paracetamol</h3>
+                    <p class="product-description">For pain relief and fever reduction.</p>
+                    <span class="price">$5.00</span>
+                    <button class="add-to-cart" onclick="addToCart('Paracetamol', 5)">Add to Cart</button>
+                </div>
+                <!-- Product 2 -->
+                <div class="product">
+                    <img src="path_to_product_image_2.jpg" alt="Product 2">
+                    <h3>Aspirin</h3>
+                    <p class="product-description">Helps relieve pain, inflammation, and fever.</p>
+                    <span class="price">$7.00</span>
+                    <button class="add-to-cart" onclick="addToCart('Aspirin', 7)">Add to Cart</button>
+                </div>
+                <!-- Add remaining 8 products here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Section -->
+    <section class="service-container">
+        <h2>Our Services</h2>
+        <div class="service-box" onclick="toggleServiceDetails('service1')">
+            <h3>Medicine Consultation</h3>
+        </div>
+        <div id="service1" class="service-details">
+            <p>We provide expert consultation for selecting the right medication for your health needs.</p>
+        </div>
+
+        <div class="service-box" onclick="toggleServiceDetails('service2')">
+            <h3>Prescription Refills</h3>
+        </div>
+        <div id="service2" class="service-details">
+            <p>Get your prescription refilled quickly and easily at our pharmacy.</p>
+        </div>
+
+        <div class="service-box" onclick="toggleServiceDetails('service3')">
+            <h3>Home Delivery</h3>
+        </div>
+        <div id="service3" class="service-details">
+            <p>We offer home delivery for all pharmacy orders in the local area.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <p>If you need assistance, please contact our pharmacy team.</p>
+            <ul>
+                <li><strong>Name:</strong> Ramesh Kumar</li>
+                <li><strong>Email:</strong> ramesh.kumar@hospital.com</li>
+                <li><strong>Phone:</strong> +977 9812345678</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Our Hospital Pharmacy Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript Function for 'Add to Cart' Button
+        function addToCart(productName, price) {
+            alert(productName + " has been added to your cart. Price: $" + price);
+        }
+
+        // JavaScript Function to Toggle Service Details
+        function toggleServiceDetails(serviceId) {
+            var serviceBox = document.getElementById(serviceId);
+            if (serviceBox.style.display === "none" || serviceBox.style.display === "") {
